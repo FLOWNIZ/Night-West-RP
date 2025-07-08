@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <title>Night-west-RP Interaktive Map</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Leaflet CSS -->
+  <link
+    rel="stylesheet"
+    href="https://unpkg.com/leaflet/dist/leaflet.css"
+  />
+  <style>
+    #map {
+      width: 100%;
+      max-width: 900px;
+      height: 600px;
+      margin: auto;
+      border: 2px solid #444;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.3);
+    }
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding: 20px;
+      background: #f9f9f9;
+    }
+  </style>
+</head>
+<body>
+
+<h1>Night-west-RP Interaktive Map</h1>
+<p>Klicke auf die Marker, um Infos zu sehen.</p>
+
+<div id="map"></div>
+
+<!-- Leaflet JS -->
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+<script>
+  // Größe der Karte in Pixel (Höhe, Breite)
+  var mapHeight = 840;
+  var mapWidth = 1080;
+
+  // Leaflet Karte mit einfachem CRS (für eigene Bildkarte)
+  var map = L.map('map', {
+    crs: L.CRS.Simple,
+    minZoom: 0,
+    maxZoom: 2,        // Maximaler Zoom = Anzahl deiner Zoom-Level (Ordner 0,1,2)
+    zoomControl: true
+  });
+
+  // Bildgrenzen in Pixel
+  var bounds = [[0,0], [mapHeight, mapWidth]];
+  map.fitBounds(bounds);
+
+  // Tile Layer mit Pfad zu deinen Kacheln
+  L.tileLayer('tiles/{z}/{x}/{y}.png', {
+    noWrap: true,
+    bounds: bounds,
+    minZoom: 0,
+    maxZoom: 2,
+    maxNativeZoom: 2,
+    continuousWorld: false
+  }).addTo(map);
+
+  // Marker hinzufügen (Koordinaten [y, x] in Pixel)
+  var markerHolzverkauf = L.marker([1200, 700]).addTo(map);
+  markerHolzverkauf.bindPopup("<b>Holzverkauf</b><br>Hier kannst du Holz verkaufen.");
+
+  var markerFischmarkt = L.marker([900, 1500]).addTo(map);
+  markerFischmarkt.bindPopup("<b>Fischmarkt</b><br>Fische verkaufen und kaufen.");
+
+  var markerStall = L.marker([500, 1000]).addTo(map);
+  markerStall.bindPopup("<b>Stall</b><br>Pferde kaufen und verkaufen.");
+
+</script>
+
+</body>
+</html>
