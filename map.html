@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Night-west-RP Interaktive Map</title>
+  <link
+    rel="stylesheet"
+    href="https://unpkg.com/leaflet/dist/leaflet.css"
+  />
+  <style>
+    #map {
+      width: 100%;
+      max-width: 900px;
+      height: 600px;
+      margin: auto;
+      border: 2px solid #444;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.3);
+    }
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding: 20px;
+      background: #f9f9f9;
+    }
+  </style>
+</head>
+<body>
+  <h1>Night-west-RP Interaktive Map</h1>
+  <p>Klicke auf die Marker, um Infos zu sehen.</p>
+  <div id="map"></div>
+
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+  <script>
+    var mapWidth = 1080;
+    var mapHeight = 840;
+
+    var map = L.map('map', {
+      crs: L.CRS.Simple,
+      minZoom: -1,
+      maxZoom: 2,
+      zoomControl: true
+    });
+
+    var bounds = [[0, 0], [mapHeight, mapWidth]];
+    var imageUrl = 'rdo_map.jpg'; // Deine JPG Datei
+
+    L.imageOverlay(imageUrl, bounds).addTo(map);
+    map.fitBounds(bounds);
+
+    var markerHolzverkauf = L.marker([700, 400]).addTo(map);
+    markerHolzverkauf.bindPopup("<b>Holzverkauf</b><br>Hier kannst du Holz verkaufen.");
+
+    var markerFischmarkt = L.marker([600, 800]).addTo(map);
+    markerFischmarkt.bindPopup("<b>Fischmarkt</b><br>Fische verkaufen und kaufen.");
+
+    var markerStall = L.marker([400, 600]).addTo(map);
+    markerStall.bindPopup("<b>Stall</b><br>Pferde kaufen und verkaufen.");
+  </script>
+</body>
+</html>
+
