@@ -54,14 +54,17 @@
     zoomControl: true
   });
  // Icon für Holz
-var iconHolz = L.icon({
+// Icon für Holz
+var iconHolzverkauf = L.icon({
   iconUrl: 'holz_marker.jpg',
   iconSize: [40, 40],
   iconAnchor: [20, 40],
   popupAnchor: [0, -40]
+});  // Wichtig: Klammer und Semikolon schließen das Objekt und den Funktionsaufruf
 
-var markerHolz = L.marker([1230, 980], { icon: iconHolz }).addTo(map);
-markerHolz.bindPopup("<b>LSPD HQ</b><br>Hier kannst du Holz abholen, um Gel dzu verdienen.");
+var markerHolz = L.marker([1230, 980], { icon: iconHolzverkauf }).addTo(map);
+markerHolz.bindPopup("<b>LSPD HQ</b><br>Hier kannst du Holz abholen, um Geld zu verdienen.");
+
 
 
 
