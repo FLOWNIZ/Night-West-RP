@@ -78,13 +78,24 @@
   var markerHolz = L.marker([1410, 2240], { icon: iconHolzverkauf }).addTo(map);
   markerHolz.bindPopup("<b>Holz</b><br>Hier kannst du Holz abholen, um Geld zu verdienen.");
 
-  // Andere Marker (Standard-Icon)
-var markerFischmarkt = L.marker([1260, 1700]).addTo(map);
-markerFischmarkt.bindPopup(`
+// Icon für Materiallager
+var iconWarehouse = L.icon({
+  iconUrl: 'warehouse_marker.png',
+  iconSize: [40, 40],
+  iconAnchor: [20, 40],
+  popupAnchor: [0, -40]
+});
+
+// Marker erstellen
+var markerMateriallager = L.marker([1410, 2240], { icon: iconWarehouse }).addTo(map);
+
+// Popup binden
+markerMateriallager.bindPopup(`
   <b>Materiallager</b><br>
   Hier werden regelmäßig Rohstoffe angeliefert.<br>
   Spieler können hier Materialien abholen, um daraus Items oder Werkzeuge zu craften.
 `);
+
 
   var markerStall = L.marker([500, 1000]).addTo(map);
   markerStall.bindPopup("<b>Stall</b><br>Pferde kaufen und verkaufen.");
