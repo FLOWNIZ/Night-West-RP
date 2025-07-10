@@ -16,6 +16,7 @@
       text-align: center;
       background: #1a1a1a;
       margin: 0; padding: 0;
+      color: white;
     }
     #map {
       width: 100%;
@@ -28,6 +29,10 @@
     }
     h1 {
       margin-top: 20px;
+      color: white;
+    }
+    p {
+      color: #ccc;
     }
   </style>
 </head>
@@ -53,38 +58,27 @@
     maxZoom: 2,
     zoomControl: true
   });
- // Icon für Holz
-// Icon für Holz
-var iconHolzverkauf = L.icon({
-  iconUrl: 'holz_marker.jpg',
-  iconSize: [40, 40],
-  iconAnchor: [20, 40],
-  popupAnchor: [0, -40]
-});  // Wichtig: Klammer und Semikolon schließen das Objekt und den Funktionsaufruf
 
-var markerHolz = L.marker([1230, 980], { icon: iconHolzverkauf }).addTo(map);
-markerHolz.bindPopup("<b>LSPD HQ</b><br>Hier kannst du Holz abholen, um Geld zu verdienen.");
-
-
-
-
-
-
-
-
-
-  
-  // Bild-Overlay (deine WebP Karte)
-  var imageUrl = 'rdo_map.webp'; // WebP Bild im gleichen Ordner
+  // Bild-Overlay (deine Karte, WebP oder PNG)
+  var imageUrl = 'rdo_map.webp'; // Pfad zu deinem Bild
   L.imageOverlay(imageUrl, bounds).addTo(map);
 
   // Ansicht auf das gesamte Bild setzen
   map.fitBounds(bounds);
 
-  // Beispiel-Marker (Koordinaten an deine Map anpassen)
-  var markerHolzverkauf = L.marker([1400, 2230]).addTo(map);
-  markerHolzverkauf.bindPopup("<b>Holzverkauf</b><br>Hier kannst du Holz verkaufen.");
+  // Icon für Holzverkauf
+  var iconHolzverkauf = L.icon({
+    iconUrl: 'holz_marker.jpg',
+    iconSize: [40, 40],
+    iconAnchor: [20, 40],
+    popupAnchor: [0, -40]
+  });
 
+  // Marker mit eigenem Icon
+  var markerHolz = L.marker([1230, 980], { icon: iconHolzverkauf }).addTo(map);
+  markerHolz.bindPopup("<b>LSPD HQ</b><br>Hier kannst du Holz abholen, um Geld zu verdienen.");
+
+  // Andere Marker (Standard-Icon)
   var markerFischmarkt = L.marker([900, 1500]).addTo(map);
   markerFischmarkt.bindPopup("<b>Fischmarkt</b><br>Fische verkaufen und kaufen.");
 
