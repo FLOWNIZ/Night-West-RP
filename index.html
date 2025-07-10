@@ -53,7 +53,24 @@
     maxZoom: 2,
     zoomControl: true
   });
+ // Icon für Holz
+var iconHolz = L.icon({
+  iconUrl: 'holz_marker.jpg',
+  iconSize: [40, 40],
+  iconAnchor: [20, 40],
+  popupAnchor: [0, -40]
 
+var markerHolz = L.marker([1230, 980], { icon: iconHolz }).addTo(map);
+markerHolz.bindPopup("<b>LSPD HQ</b><br>Hier kannst du Holz abholen, um Gel dzu verdienen.");
+
+
+
+
+
+
+
+
+  
   // Bild-Overlay (deine WebP Karte)
   var imageUrl = 'rdo_map.webp'; // WebP Bild im gleichen Ordner
   L.imageOverlay(imageUrl, bounds).addTo(map);
